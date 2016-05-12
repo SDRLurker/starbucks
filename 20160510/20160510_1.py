@@ -1,16 +1,31 @@
 ﻿#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-def sum_primes(n):
-    primes = range(n+1)	# [0,1,2,...,n]인 리스트 생성
-    primes[1] = 0	# 1은 소수가 아니라 0 대임
-    import math		# 에라스토스의 채를 이용하여 소수가 아닌 값에 0 대입
-    for base in range(2,int(math.sqrt(n))+1):
-        s = 2
+def get_sums(n):
+    primes = range(n+1)
+    primes[1] = 0
+    import math
+    s = 2
+    while 2 * s <= n:
+        primes[2 * s] = 0
+        s += 1
+    base = 3
+    while base <= int(math.sqrt(n)):
+        s = base
         while base * s <= n:
             primes[base * s] = 0
-            s += 1
-    return sum(primes)
+            s += 2
+        base += 2
+    i = 1
+    while i <= n:
+        primes[i] = primes[i-1] + primes[i]
+        i += 1
+    return primes    
+
+sums = get_sums(1000000)
+
+def sum_primes(n):
+    return sums[n]
 
 t = int(raw_input())
 for _ in range(t):

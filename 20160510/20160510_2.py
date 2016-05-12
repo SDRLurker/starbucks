@@ -7,7 +7,8 @@ def get_max_product(grid, tox, toy, plusx, plusy, fromx = 0):
         for x in range(tox):
             p = 1
             for i in range(4):
-                p *= grid[y+(plusy*i)][x+(plusx*i)]
+                if 0 <= y+(plusy*i) < 20 and 0 <= x+(plusx*i) < 20:
+                    p *= grid[y+(plusy*i)][x+(plusx*i)]
             max_product = max(p, max_product)
     return max_product
 

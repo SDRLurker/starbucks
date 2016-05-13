@@ -1,54 +1,34 @@
 ﻿#!/usr/bin/python
 # -*- coding: utf-8 -*-
+# 참고주소 : http://stackoverflow.com/questions/18281956/java-code-for-project-euler-12
 
 import math
-def is_prime(n):
-        i = 2
-        while i <= int(math.sqrt(n)):
-                if n % i == 0:
-                        return False
-                i += 1
-        return True
-
-def p_cnt(n, p):
-        cnt = 0
-        while n % p == 0:
-                cnt += 1
-                n = n // p
-        return n, cnt
-
-def get_divisor(n):
-        d = {}
-        n, cnt = p_cnt(n, 2)
-        if cnt > 0:
-                d[2] = cnt
-
-        p = 3
-        while n > 1:
-                cnt = 0
-                if is_prime(p):
-                        n, cnt = p_cnt(n, p)
-                        if cnt > 0:
-                                d[p] = cnt
-                p += 2
-        return d
-
 def get_divisor_size(n):
-	d = get_divisor(n)
-	size = 1
-	for p in d:
-		size *= (d[p]+1)
+	size = 0
+	i = 1
+	while i * i <= n:
+		if n % i == 0:
+			size += 2
+		i += 1
+	sqrt = int(math.sqrt(n))
+	if sqrt * sqrt == n:
+		size -= 1
 	return size
 
+# seq와 seq+1이 서로소인 성질을 이용함.
 def get_min_divisor_triangle(n):
-	t = 1
-	plus = 2
+	seq = 1
 	while True:
-		ds = get_divisor_size(t)
-		if ds > n:
+		if seq % 2 == 0:
+			ds1 = get_divisor_size(seq // 2)
+			ds2 = get_divisor_size(seq+1)
+		else:
+			ds1 = get_divisor_size(seq)
+			ds2 = get_divisor_size((seq+1) // 2)		
+		if ds1 * ds2 > n:
+			t = (seq * (seq+1)) // 2		
 			break
-		t += plus
-		plus += 1
+		seq += 1
 	return t
 
 t = int(raw_input())

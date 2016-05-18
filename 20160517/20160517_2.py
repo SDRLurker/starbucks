@@ -6,7 +6,9 @@ def parentheses(s):
 	for c in s:	
 		if c in ('{', '(', '['):
 			stack.append(c)
-		elif c in ('}', ')', ']'):
+		else:
+			if len(stack) == 0:
+				return False
 			poped = stack[-1]
 			if c == '}' and poped == '{' or \
 			   c == ')' and poped == '(' or \
@@ -15,10 +17,7 @@ def parentheses(s):
 			else:		
 				return False
 
-	if len(stack) == 0:
-		return True
-	else:
-		return False
+	return len(stack) == 0
 
 #print parentheses("{[()]}")
 #print parentheses("{[(])}")
@@ -27,4 +26,4 @@ def parentheses(s):
 t = int(raw_input())
 for _ in range(t):
 	s = raw_input()
-	print parentheses(s)	
+	print "YES" if parentheses(s) else "NO"

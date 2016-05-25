@@ -1,6 +1,7 @@
 #!/use/bin/python
 # -*- coding:utf-8 -*-
 class Solution(object):
+    r = (lambda k:3**k, lambda k:(3**(k-1))*4, lambda k:(3**k)*2)
     def integerBreak(self, n):
         """
         :type n: int
@@ -10,11 +11,7 @@ class Solution(object):
             return 1
         if n == 3:
             return 2
-        r = 1
-        while n > 4:
-            n = n - 3
-            r *= 3
-        return r * n
+        return self.r[n%3](n//3)
 
 s = Solution()
 t = int(raw_input())

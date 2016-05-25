@@ -14,10 +14,7 @@ class Solution(object):
             else:
                 freq[i] = 1
         ff = sorted(freq.items(), key=lambda f:f[1])
-        result = []
-        for i in xrange(k):
-            result.append(ff[len(freq)-1-i][0])
-        return result
+        return [x[0] for x in ff[-k:]]
 
 s = Solution()
 print s.topKFrequent([1,1,1,2,2,3],2)

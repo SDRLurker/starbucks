@@ -1,23 +1,19 @@
+import sys
 class Solution(object):
     def increasingTriplet(self, nums):
         """
         :type nums: List[int]
         :rtype: bool
         """
-        idx = 0
-        if len(nums) < 3:
-            return False
-        arr = [nums[0], 0]
+	first = second = sys.maxint
         
         for num in nums:
-            if num <= arr[idx]:
-                if not (idx > 0 and num <= arr[idx-1]):
-                    arr[idx] = num
-            else:
-                idx += 1
-                if idx >= 2:
-                    return True
-                arr[idx]= num
+		if num <= first:
+			first = num	
+		elif num <= second:
+			second = num
+		else:
+			return True
         return False
 
 s = Solution()

@@ -6,7 +6,7 @@ class Solution(object):
         """
         n = len(matrix)
         for y in xrange(n):
-            for x in xrange(n):
+            for x in xrange(y):
                 tmp = matrix[y][x]
                 matrix[y][x] = matrix[x][y]
                 matrix[x][y] = tmp

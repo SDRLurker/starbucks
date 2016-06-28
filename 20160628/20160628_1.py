@@ -1,14 +1,21 @@
-class Solution(object):
+class Solution:
     def isPerfectSquare(self, num):
         """
         :type num: int
         :rtype: bool
         """
-        i = 1
-        while i * i <= num:
-            if i * i == num:
+        if num == 1:
+            return True
+        left = 1
+        right = num
+        while left <= right:
+            mid = (left + right) // 2
+            if mid * mid > num:
+                right = mid - 1
+            elif mid * mid < num:
+                left = mid + 1
+            else:
                 return True
-            i += 1
         return False
 
 s = Solution()

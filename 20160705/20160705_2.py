@@ -22,4 +22,4 @@ e = 0
 print "%10d(%08X) %10d(%08X) %10d(%08X)" % (0, 0, o, o, e, e)
 o = s.reverseBits(1)
 e = 0x80000000
-print "%10d(%08X) %10d(%08X) %10d(%08X)" % (0, 0, o, o, e, e)
+print "%10d(%08X) %10d(%08X) %10d(%08X)" % (1, 1, o, o, e, e)

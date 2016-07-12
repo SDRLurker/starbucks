@@ -4,6 +4,8 @@
 int lengthOfLastWord(char* s) {
     int i = strlen(s) - 1;
     int c = 0;
+    while(s[i--] == ' ');
+    i++;
     for(;i>=0;i--){
         if(s[i] == ' ')
             break;

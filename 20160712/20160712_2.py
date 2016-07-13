@@ -31,9 +31,9 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        if root == None:
+        if not root:
             return True
-        if (root.left == None and root.right) or (root.right == None and root.left):
+        if (not root.left and root.right) or (not root.right and root.left):
             return False
         self.l = []
         self.r = []

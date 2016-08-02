@@ -4,20 +4,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        s = 0
-        max_idx = nums[s]
-        while s < len(nums) and nums[s] > 0:
-            for i in xrange(s, max_idx+1):
-                if nums[i] + i > max_idx:
-                    max_idx = nums[i] + i
-                if max_idx >= len(nums) - 1:
-                    return True
-            s += 1
-            while s+1 < len(nums)-1 and nums[s] == 0:
-                s += 1
-        if max_idx >= len(nums) - 1:
-            return True
-        return False
+        max_idx = 0
+        for i in xrange(len(nums)):
+            if max_idx >= len(nums)-1:
+                return True
+            if max_idx < i: 
+                return False
+            max_idx = max(max_idx, i+nums[i])
+        return True
 
 def solve_string(s, nums, expected):
 	return "%20s %10s %10s" % (nums, expected, s.canJump(nums))

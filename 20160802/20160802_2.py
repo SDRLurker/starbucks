@@ -7,10 +7,15 @@ class Solution(object):
         """
         kv = {}
         for i, num in enumerate(nums):
-	    kv[num] = i
+            if num in kv:
+                kv[num].append(i)
+            else:
+                kv[num] = [i]
         for num in nums:
-            if target-num in kv:
-                return [kv[num], kv[target-num]]
+            if num != target-num and target-num in kv:
+                return [kv[num][0], kv[target-num][0]]
+            elif len(kv[num]) == 2 and nums[kv[num][0]] + nums[kv[num][1]] == target:
+                return kv[num]
         return []
 
 def solve_string(s, nums, target, expected):

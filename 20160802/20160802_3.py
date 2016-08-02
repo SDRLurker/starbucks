@@ -6,13 +6,15 @@ class Solution(object):
         """
         s = 0
         max_idx = nums[s]
-        while nums[s] > 0:
+        while s < len(nums) and nums[s] > 0:
             for i in xrange(s, max_idx+1):
                 if nums[i] + i > max_idx:
                     max_idx = nums[i] + i
                 if max_idx >= len(nums) - 1:
                     return True
-            s = max_idx
+            s += 1
+            while s+1 < len(nums)-1 and nums[s] == 0:
+                s += 1
         if max_idx >= len(nums) - 1:
             return True
         return False

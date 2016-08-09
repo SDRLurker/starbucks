@@ -7,16 +7,18 @@ class Solution(object):
         """
         if x < 0:
             return False
-        tmpx = x
-        while tmpx > 0:
-            if int(math.log10(x)) == 0:
-                return True
-            tmpx -= 10 ** int(math.log10(tmpx)) * (tmpx % 10)
-            if tmpx < 0 or int(math.log10(x)) == int(math.log10(tmpx)):
+        elif x == 0:
+            return True
+        digit = int(math.log10(x))
+        while x > 0:
+            x -= 10 ** digit * (x % 10)
+            if x == 0:
+                break
+            if x < 0 or int(math.log10(x)) == digit:
                 return False
-            tmpx -= (tmpx % 10)
-            tmpx //= 10
-            x = tmpx
+            x -= (x % 10)
+            x //= 10
+            digit -= 2
         return True
 
 def solve_string(s, x, expected):

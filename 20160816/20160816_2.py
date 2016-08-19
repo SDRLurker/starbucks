@@ -16,7 +16,16 @@ class Solution(object):
             a = self.compare(int(lvl), int(ver2[i]))
             if a != 0:
                 return a
-        return self.compare(len(ver1), len(ver2))
+        a = self.compare(len(ver1), len(ver2))
+        if a < 0:
+            ver1, ver2 = ver2, ver1
+        if a != 0:
+            for i in range(len(ver2), len(ver1)):
+                b = self.compare(int(ver1[i]), 0)
+                if b != 0:
+                    return b * a
+            a = 0
+        return a
 
 def solve_string(s, ver1, ver2, expected):
 	return "%10s %10s %10d %10d" % (ver1, ver2, expected, s.compareVersion(ver1, ver2))

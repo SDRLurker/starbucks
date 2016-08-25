@@ -1,8 +1,14 @@
 def d(n):
-    s = []
-    for i in range(1, n//2+1):
-        if n%i == 0:
-            s.append(i)
+    s = [1]
+    i = 2
+    while i * i <= n: 
+        if n % i != 0:
+            i += 1 
+            continue
+        s.append(i)
+        if i * i != n: 
+            s.append(n//i)
+        i += 1 
     return sum(s)
 
 res = set()

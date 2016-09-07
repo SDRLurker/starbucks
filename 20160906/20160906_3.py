@@ -4,26 +4,22 @@ class Solution(object):
         :type data: List[int]
         :rtype: bool
         """
-        i = 0
+        cond_pairs = ((0x80,0),(0xe0,0xc0),(0xf0,0xe0),(0xf8,0xf0))
         next_80 = 0
-        while i < len(data):
+        for byte in data:
             if next_80 == 0:
-                if data[i] & 0x80 == 0:
-                    next_80 = 0
-                elif data[i] & 0xe0 == 0xc0:
-                    next_80 = 1
-                elif data[i] & 0xf0 == 0xe0:
-                    next_80 = 2
-                elif data[i] & 0xf8 == 0xf0:
-                    next_80 = 3
-                else:
+                next_80 = -1
+                for idx, cond in enumerate(cond_pairs):
+                    if byte & cond[0] == cond[1]:
+                        next_80 = idx
+                        break
+                if next_80 < 0:
                     return False
             else:
-                if data[i] & 0xc0 == 0x80:
+                if byte & 0xc0 == 0x80:
                     next_80 -= 1
                 else:
                     return False
-            i += 1
         return next_80 == 0
 
 def solve_string(s, input, expected):

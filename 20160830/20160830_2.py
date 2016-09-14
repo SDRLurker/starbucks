@@ -5,11 +5,15 @@ class Solution(object):
         :rtype: int
         """
         max_area = 0
-        for i in range(len(height)-1):
-            for j in range(i+1, len(height)):
-                area = (j-i) * min((height[i], height[j]))
-                if area > max_area:
-                    max_area = area
+        left = 0
+        right = len(height)-1
+        while left < right:
+            area = (right-left) * min((height[left],height[right]))
+            max_area = max(area, max_area)
+            if height[left] < height[right]:
+                left += 1
+            else:
+                right -= 1
         return max_area
 
 def solve_string(s, height, expected):

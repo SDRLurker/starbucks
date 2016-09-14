@@ -4,18 +4,13 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        cnts = [[0,0] for x in range(26)]
-        idx = -1
+        cnts = [0 for x in range(26)]
+        for c in s:
+            cnts[ord(c)-ord('a')] += 1
         for i, c in enumerate(s):
-            cnts[ord(c)-ord('a')][0] = i
-            cnts[ord(c)-ord('a')][1] += 1
-        minidx = len(s)
-        for item in cnts:
-            if item[1] == 1 and minidx > item[0]:
-                minidx = item[0]
-        if minidx < len(s):
-            idx = minidx
-        return idx
+            if cnts[ord(c)-ord('a')] == 1:
+                return i
+        return -1
 
 def solve_string(solution, s, expected):
         return "%20s %8s %8s" % (s, expected, solution.firstUniqChar(s))

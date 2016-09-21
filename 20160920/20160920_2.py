@@ -5,12 +5,16 @@ class Solution(object):
         :type k: int
         :rtype: str
         """
+        if k >= len(num):
+            return "0"
         output = ""
         for c in num:
-            if len(output) > 0 and ord(output[-1]) > ord(c) and k > 0:
+            while len(output) > 0 and ord(output[-1]) > ord(c) and k > 0:
                 output = output[:-1]
                 k -=  1
             output += c
+        if k > 0:
+            output = output[:-k]
         output = output.lstrip("0")
         if len(output) == 0:
             output = "0"
@@ -26,3 +30,5 @@ print(solve_string(s, "10200", 1, "200"))
 print(solve_string(s, "10", 2, "0"))
 print(solve_string(s, "9", 1, "0"))
 print(solve_string(s, "1234567890", 9, "0"))
+print(solve_string(s, "98765432101234567891234523456",15,"1231234523456"))
+print(solve_string(s, "1111111",3,"1111"))

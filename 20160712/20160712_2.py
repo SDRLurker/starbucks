@@ -56,8 +56,8 @@ def makeTree(vals):
 s = Solution()
 vals = [1,2,2,3,4,4,3]
 root = makeTree(vals)
-print "%35s %10s %10s" % ("input", "Expected", "Result")
-print "%35s %10s %10s" % (vals, "True", s.isSymmetric(root)) 
+print("%35s %10s %10s" % ("input", "Expected", "Result"))
+print("%35s %10s %10s" % (vals, "True", s.isSymmetric(root))) 
 vals = [1,2,2,None,3,None,3]
 root = makeTree(vals)
-print "%35s %10s %10s" % (vals, "False", s.isSymmetric(root)) 
+print("%35s %10s %10s" % (vals, "False", s.isSymmetric(root)))

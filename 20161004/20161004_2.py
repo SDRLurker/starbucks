@@ -9,7 +9,9 @@ class Solution(object):
         for _ in range(8):
             s = cs[num&0xf] + s
             num >>= 4
-        return s.lstrip("0")
+        s = s.lstrip("0")
+        s = "0" if len(s) == 0 else s
+        return s
 
 def solve_string(s, num, expected):
         return "%10d %10s %10s" % (num, expected, s.toHex(num))

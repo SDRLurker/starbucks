@@ -11,8 +11,9 @@ class Solution(object):
         for i in range(len(answer)-1):
             d1 = ord(num1[l1-1-i]) - ord('0') if i < len(num1) else 0
             d2 = ord(num2[l2-1-i]) - ord('0') if i < len(num2) else 0
-            answer[i] += ((d1+d2) % 10)
-            answer[i+1] = ((d1+d2) // 10)
+            answer[i] += (d1+d2)
+            answer[i+1] += answer[i] // 10
+            answer[i] %= 10
         result = "".join([str(c) for c in answer[::-1]]).lstrip("0")
         return "0" if len(result) == 0 else result
 

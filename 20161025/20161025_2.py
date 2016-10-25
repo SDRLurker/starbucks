@@ -21,6 +21,8 @@ class Solution(object):
             s_cnt[ord(s[si-len(p)])-ord('a')] -= 1
             s_cnt[ord(s[si])-ord('a')] += 1
             si += 1
+        if s_cnt == p_cnt:
+            indice.append(si-len(p))
         return indice
 
 def solve_string(solution, s, p, expected):

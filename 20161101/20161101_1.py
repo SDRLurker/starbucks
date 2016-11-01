@@ -4,22 +4,7 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        left = x = 0
-        right = n
-        while left < right:
-            x = (left+right) // 2
-            if x * (x+1) // 2 <= n < (x+1)*(x+2) // 2:
-                return x
-            elif x * (x+1) // 2 > n:
-                right = x - 1
-            else:
-                left = x+1
-        a = x-1
-        while True: 
-            if a * (a+1) // 2 <= n < (a+1)*(a+2) // 2:
-                break
-            a += 1
-        return a
+        return int( (-1+((1+8*n))**0.5) // 2) 
         		
 
 def solve_string(s, n, expected):

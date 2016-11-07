@@ -21,24 +21,25 @@ class Solution(object):
         return self.cnt
         
     def backtrack(self, a, sum, k):
-        if self.is_solution(a, sum, k):
-            self.cnt += 1
-        else:
-            k = k + 1
-            c = self.candidate(a, sum, k)
-            for i in range(len(c)):
-                a[k] = c[i]
-                self.backtrack(a, sum, k)
+        cnt = self.is_solution(a, sum, k)
+        if cnt > 0:
+            self.cnt += cnt
+        k = k + 1
+        c = self.candidate(a, sum, k)
+        for i in range(len(c)):
+            a[k] = c[i]
+            self.backtrack(a, sum, k)
     
     def is_solution(self, a, sum, k):
+        c = 0
         s = 0
         i = k
         while i>=0:
             s += a[i].val
             if s == sum:
-                return True
+                c += 1
             i -= 1
-        return False
+        return c
     
     def candidate(self, a, sum, k):
         c = []

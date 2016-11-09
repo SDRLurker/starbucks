@@ -5,17 +5,10 @@ class Solution(object):
         :rtype: int
         """
         c = 0
-        while len(set(nums)) > 1:
-            mi = i = 0
-            m = nums[0]
-            while i < len(nums):
-                if nums[i] >= m:
-                    m = nums[i]
-                    mi = i
-                nums[i] += 1
-                i += 1
-            nums[mi] -= 1
-            c += 1
+        nums.sort(reverse=True)
+        for i in range(len(nums)-1):
+            diff = nums[i] - nums[i+1]
+            c += (diff * (i+1))
         return c
 
 def solve_string(s, nums, expected):

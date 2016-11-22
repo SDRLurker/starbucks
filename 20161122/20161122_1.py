@@ -5,15 +5,14 @@ class Solution(object):
         :rtype: int
         """
         p = 0
-        adjent = ((-1,0), (0,1), (1,0), (0,-1))
+        adjent = ((-1,0), (0,-1))
         for y, row in enumerate(grid):
             for x, col in enumerate(row):
                 if grid[y][x] == 1:
-                    cp = 0
+                    p += 4
                     for a in adjent:
-                        if y+a[0] >= 0 and x+a[1] >= 0 and y+a[0] < len(grid) and x+a[1] < len(row) and grid[y+a[0]][x+a[1]] == 1:
-                            cp += 1
-                    p += (4-cp)
+                        if y+a[0] >= 0 and x+a[1] >= 0 and grid[y+a[0]][x+a[1]] == 1:
+                            p -= 2
         return p
 
 def solve_string(s, grid, expected):

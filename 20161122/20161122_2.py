@@ -5,7 +5,9 @@ class Solution(object):
         :rtype: bool
         """
         n = len(str)
-        if str[0] * n == str:
+        if n == 1:
+            return False
+        elif str[0] * n == str:
             return True
         d = 2
         while d*d <= n:
@@ -13,7 +15,7 @@ class Solution(object):
                 divs = (d, n//d)
                 for div in divs:
                     diff = False
-                    for i in range(1, n//div):
+                    for i in range(1, n // (n//div)):
                         if str[:n//div] != str[i*(n//div):(i+1)*(n//div)]:
                             diff = True
                             break
@@ -28,3 +30,4 @@ def solve_string(s, str, expected):
 s = Solution()
 print("%20s %10s %10s" % ("str", "Expected", "Result"))
 print(solve_string(s, "a", False))
+print(solve_string(s, "abcabc", True))

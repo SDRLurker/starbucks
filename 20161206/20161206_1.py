@@ -6,14 +6,22 @@ class Solution(object):
         :rtype: bool
         """
         ps_dic = {}
+        sp_dic = {}
         strs = str.split()
         if len(pattern) != len(strs):
             return False
         for i,c in enumerate(pattern):
             if c not in ps_dic:
                 ps_dic[c] = strs[i]
-            elif ps_dic[c] != strs[i]:
+            if ps_dic[c] != strs[i]:
                 return False
+        for i,s in enumerate(strs):
+            if s not in sp_dic:
+                sp_dic[s] = pattern[i]
+            if sp_dic[s] != pattern[i]:
+                return False
+        if len(ps_dic) != len(sp_dic):
+            return False
         return True
 
 def solve_string(s, pattern, str, expected):

@@ -24,11 +24,8 @@ class Solution(object):
         for h in houses:
             l,r = self.bsearch(heaters, h)
             if l != r:
-                a = b = 0
-                if 0 <= l < len(heaters):
-                    a = max(m, abs(heaters[l] - h))
-                if 0 <= r < len(heaters):
-                    b = max(m, abs(heaters[r] - h))
+                a = max(m, abs(heaters[l] - h)) if 0 <= l < len(heaters) else 0
+                b = max(m, abs(heaters[r] - h)) if 0 <= r < len(heaters) else 0
                 b = a if a > 0 and b == 0 else b
                 a = b if b > 0 and a == 0 else a
                 m = max(m, min(a,b))

@@ -6,7 +6,8 @@ class Solution(object):
         """
         t = ''
         while n > 0:
-            t = chr(n%26 + ord('A')-1) + t
+            n -= 1
+            t = chr(n%26 + ord('A')) + t
             n //= 26
         return t
 

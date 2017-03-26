@@ -6,8 +6,8 @@ class Solution(object):
             if stat != c:
                 cnt += 1
                 stat = c
-            if i == len(s) - 1 and c == '-':
-                cnt += 1
+        if s[-1] == '-':
+            cnt += 1
         return cnt
 
 def solve_string(solution, s, expected):

@@ -4,16 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        result = ""
-        ss = []
-        for c in s:
-            if c != ' ':
-                ss.append(c)
-            else:
-                result += ''.join(ss[::-1]) + ' '
-                ss = []
-        result += ''.join(ss[::-1])
-        return result
+        return ' '.join([w[::-1] for w in s.split()])
 
 def solve_string(solution, s, expected):
     return "%26s %26s %26s" % (s, expected, solution.reverseWords(s))

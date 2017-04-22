@@ -12,9 +12,7 @@ class Solution(object):
                 l = 0
             elif c == 'L':
                 l += 1
-                a = 0
             else:
-                a = 0
                 l = 0
             if a > 1 or l > 2:
                 return False
@@ -28,3 +26,6 @@ print("%40s %10s %10s" % ("s", "Expected", "Result"))
 print(solve_string(s, "PPALLP", True))
 print(solve_string(s, "PPALLL", False))
 print(solve_string(s, "ALLAPPL", False))
+print(solve_string(s, "LLLL", False))
+print(solve_string(s, "LALL", True))
+print(solve_string(s, "LLPPLPPLPLPPLPLPLPPAPPPPPLPALL", False))

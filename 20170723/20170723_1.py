@@ -5,11 +5,11 @@ class Solution:
         :rtype: List[int]
         """
         e = []
-        s = list()
+        s = set()
         a = {i for i in range(1,len(nums)+1)}
         for n in nums:
             if n not in s:
-                s.append(n)
+                s.add(n)
             else:
                 e.append(n)
             if n in a:

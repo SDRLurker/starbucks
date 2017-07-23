@@ -5,14 +5,16 @@ class Solution:
         :rtype: List[int]
         """
         e = []
-        s = []
+        s = list()
+        a = {i for i in range(1,len(nums)+1)}
         for n in nums:
             if n not in s:
                 s.append(n)
             else:
                 e.append(n)
-        s = list( set(range(1,len(nums)+1)) - set(nums) )
-        e.append(s[0])
+            if n in a:
+                a.discard(n)
+        e.append(list(a)[0])
         return e
 
 import unittest

@@ -12,11 +12,20 @@ class Solution:
         :rtype: int
         """
         c = 0
+        bsub = ""
         for siz in range(1, len(s)+1):
+            bc = 0
             for i in range(len(s)+1-siz): 
                 subset = s[i:i+siz]
                 if self.isPalindrome(subset):
                     c += 1
+                if bsub == subset:
+                    bc += 1
+                bsub = subset
+            if siz == 1 and bc == len(s)-1:
+                for p in range(1,bc+1):
+                    c += p
+                break
         return c
 
 import unittest

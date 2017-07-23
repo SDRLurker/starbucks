@@ -4,18 +4,16 @@ class Solution:
         :type nums: List[int]
         :rtype: List[int]
         """
-        e = []
-        s = set()
-        a = {i for i in range(1,len(nums)+1)}
+        c = [0 for _ in range(len(nums)+1)]
         for n in nums:
-            if n not in s:
-                s.add(n)
-            else:
-                e.append(n)
-            if n in a:
-                a.discard(n)
-        e.append(list(a)[0])
-        return e
+            c[n] += 1
+        a = b = 0
+        for i in range(1,len(nums)+1):
+            if c[i] == 0:
+                b = i
+            elif c[i] == 2:
+                a = i
+        return [a, b]
 
 import unittest
 class test_solution(unittest.TestCase):

@@ -1,11 +1,10 @@
 def lattice(n, m):
-    a = [1 for _ in range(n+1)]
-    for _ in range(m):
-       b = []
-       for i in range(n+1):
-           b.append(b[i-1] + a[i] if i > 0 else 1)
-       a = b
-    return a[-1]
+    s = 1
+    for i in range(n+m, m, -1):
+        s *= i
+    for i in range(n, 0, -1):
+        s //= i
+    return s
 
 t = int(input())
 for _ in range(t):

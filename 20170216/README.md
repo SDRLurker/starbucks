@@ -1,6 +1,6 @@
 ﻿20170216_1
 2월 16일 첫번째 문제입니다.
-https://leetcode.com/submissions/detail/93197852/
+https://leetcode.com/problems/base-7/
 
 20170216_2
 2월 16일 두번째 문제입니다.

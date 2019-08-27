@@ -21,7 +21,7 @@ def solve_string(s, nums, k, expected):
 
 s = Solution()
 print("%20s %10s %10s %10s" % ("nums", "k", "expected", "Result"))
-print(solve_string(s, [3,1,4,1,5], 2, 1))
+print(solve_string(s, [3,1,4,1,5], 2, 2))
 print(solve_string(s, [1,2,3,4,5], 1, 4))
 print(solve_string(s, [1,3,1,5,4], 0, 1))
 print(solve_string(s, [1,2,3,4,5], -1, 0))

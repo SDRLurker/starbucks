@@ -1,23 +1,27 @@
 def d(n):
-    s = [1]
-    i = 2
-    while i * i <= n: 
-        if n % i != 0:
-            i += 1 
-            continue
-        s.append(i)
-        if i * i != n: 
-            s.append(n//i)
-        i += 1 
-    return sum(s)
+    ds = [1]
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            ds.append(i)
+            if n // i != i:
+                ds.append(n//i)
+    return sum(ds)
 
-res = set()
-for t in range(int(input())):
+amicables = set()
+for a in range(1,100000+1):
+    b = d(a)
+    if a != b and d(b) == a:
+        if b > a:
+            a, b = b, a
+        amicables.add((a,b))
+
+T = int(input())
+for _ in range(T):
     N = int(input())
-    for a in range(1, N):
-        b = d(a)
-        if a != b and d(b) == a:
-            res.add(a)
-            if b < N:
-                res.add(b)
-    print(sum(res))
+    s = 0
+    for a,b in amicables:
+        if a<=N:
+            s += a
+        if b<=N:
+            s += b
+    print(s)

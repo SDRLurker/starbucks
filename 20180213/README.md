@@ -8,4 +8,4 @@ https://leetcode.com/problems/rabbits-in-forest/
 
 20180213_3
 2월 13일 세번째 문제입니다.
-https://leetcode.com/problems/largest-plus-sign/
+https://leetcode.com/problems/k-th-symbol-in-grammar/

@@ -1,19 +1,15 @@
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid):
         bef_row = []
-        for y, row in enumerate(obstacleGrid):
+        for row in obstacleGrid:
             cur_row = [0 for v in row]
             for x, col in enumerate(row):
                 if bef_row:
-                    if x == 0:
-                        cur_row[x] = bef_row[x] if col == 0 else 0
-                    else:
-                        cur_row[x] = (bef_row[x] + cur_row[x-1]) if col == 0 else 0
+                    left = 0 if x == 0 else cur_row[x-1]
+                    cur_row[x] = (bef_row[x] + left) if col == 0 else 0
                 else:
-                    if x == 0:
-                        cur_row[x] = 1 if col == 0 else 0
-                    else:  
-                        cur_row[x] = 1 if col == 0 and cur_row[x-1] else 0
+                    is_left = 1 if x == 0 else cur_row[x-1]
+                    cur_row[x] = 1 if col == 0 and is_left else 0
             bef_row = cur_row
         return cur_row[-1]
 

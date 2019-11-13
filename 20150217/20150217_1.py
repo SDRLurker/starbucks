@@ -26,21 +26,24 @@ class Solution(object):
 def makeTree(vals):
     nodes = []
     for i in vals:
-        node = TreeNode(i)
+        node = TreeNode(i) if i is not None else None
         nodes.append(node)
     i = 0
     while i < len(vals):
-        nodes[i].left = nodes[(i+1) * 2 - 1] if (i+1) * 2 - 1 < len(vals) and vals[(i+1) * 2 - 1] is not None else None
-        nodes[i].right = nodes[(i+1) * 2] if (i+1) * 2 < len(vals) and vals[(i*1) * 2] is not None else None
+        if nodes[i]:
+            nodes[i].left = nodes[(i+1) * 2 - 1] if (i+1) * 2 - 1 < len(vals) and vals[(i+1) * 2 - 1] is not None else None
+            nodes[i].right = nodes[(i+1) * 2] if (i+1) * 2 < len(vals) and vals[(i*1) * 2] is not None else None
+            #print(i, nodes[i].val, (i+1) * 2 - 1, nodes[i].left.val if nodes[i].left else None, (i+1)*2, nodes[i].right.val if nodes[i].right else None)
         i += 1
     return nodes[0]
 
 import unittest
 class test_solution(unittest.TestCase):
     def test_all(self):
+        s = Solution()
+
         vals = [1,2,3]
         trees = makeTree(vals)
-        s = Solution()
         self.assertEqual(s.sumNumbers(trees), 25)
 
         vals = [4,9,0,5,1]
@@ -49,9 +52,13 @@ class test_solution(unittest.TestCase):
 
         self.assertEqual(s.sumNumbers(None), 0)
 
-        #vals = [2,7,4,None,4,0,None,None,2,None,None,None,1]
-        #trees = makeTree(vals)
-        #self.assertEqual(s.sumNumbers(trees), 27661)
+        vals = [      2,
+                     7, 4,
+               None,4,  0,None,
+          None,None,2,None,None,None,None,None,
+None,None,None,None,1]
+        trees = makeTree(vals)
+        self.assertEqual(s.sumNumbers(trees), 27661)
 
 if __name__ == "__main__":
     unittest.main()

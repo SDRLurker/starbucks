@@ -6,7 +6,7 @@ class TreeNode(object):
         self.right = None
 
 class Solution:
-    def findMode(self, root: TreeNode):
+    def findMode(self, root):
         cur = root
         q = []
         d = {}
@@ -30,8 +30,10 @@ def makeTree(vals):
         nodes.append(node)
     i = 0
     while i < len(vals):
-        nodes[i].left = nodes[(i+1) * 2 - 1] if (i+1) * 2 - 1 < len(vals) and vals[(i+1) * 2 - 1] else None
-        nodes[i].right = nodes[(i+1) * 2] if (i+1) * 2 < len(vals) and vals[(i+1) * 2] else None
+        if nodes[i]:
+            nodes[i].left = nodes[(i+1) * 2 - 1] if (i+1) * 2 - 1 < len(vals) and vals[(i+1) * 2 - 1] is not None else None
+            nodes[i].right = nodes[(i+1) * 2] if (i+1) * 2 < len(vals) and vals[(i*1) * 2] is not None else None
+            #print(i, nodes[i].val, (i+1) * 2 - 1, nodes[i].left.val if nodes[i].left else None, (i+1)*2, nodes[i].right.val if nodes[i].right else None)
         i += 1
     return nodes[0]
 

@@ -6,12 +6,7 @@ class Solution(object):
         """
         res = []
         for ri in range(numRows):
-            row = [ 0 for i in range(ri+1)]
-            for i in range(ri+1):
-                if i == 0 or i == ri:
-                    row[i] = 1
-                else:
-                    row[i] = res[ri-1][i-1] + res[ri-1][i]
+            row = [ 1 if i in (0, ri) else res[ri-1][i-1] + res[ri-1][i] for i in range(ri+1)]
             res.append(row)
         return res
 

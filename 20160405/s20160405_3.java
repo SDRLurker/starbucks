@@ -36,7 +36,7 @@ public class s20160405_3 {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         for(int i=0;i<n;i++) {
-            Solution solution = new s20160405_3();
+            s20160405_3 solution = new s20160405_3();
             System.out.println(solution.getPairs(in.next()));
         }
     }

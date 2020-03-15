@@ -11,12 +11,7 @@ class Solution:
         if nr*nc != r*c:
             return nums
         arr = [v for row in nums for v in row]
-        o = []
-        for y in range(r):
-            row_arr = []
-            for x in range(c):
-                row_arr.append(arr[y*c+x])
-            o.append(row_arr)
+        o = [arr[y*c:y*c+c] for y in range(r)]
         return o
 
 import unittest
